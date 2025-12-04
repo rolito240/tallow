@@ -1,6 +1,6 @@
 'use client';
 
-import React, { createContext, useContext, useState, useLayoutEffect } from 'react';
+import React, { createContext, useContext, useState } from 'react';
 import { Language, getTranslation } from '@/lib/i18n';
 
 interface LanguageContextType {
@@ -11,18 +11,19 @@ interface LanguageContextType {
 
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
-export function LanguageProvider({ children }: { children: React.ReactNode }) {
-  const [language, setLanguageState] = useState<Language>('es');
-  const [mounted, setMounted] = useState(false);
-
-  useLayoutEffect(() => {
-    // Load language from localStorage on client side
+// Initialize language from localStorage
+function initializeLanguage(): Language {
+  if (typeof window !== 'undefined') {
     const savedLanguage = localStorage.getItem('language') as Language | null;
     if (savedLanguage && (savedLanguage === 'es' || savedLanguage === 'en')) {
-      setLanguageState(savedLanguage);
+      return savedLanguage;
     }
-    setMounted(true);
-  }, []);
+  }
+  return 'es';
+}
+
+export function LanguageProvider({ children }: { children: React.ReactNode }) {
+  const [language, setLanguageState] = useState<Language>(initializeLanguage);
 
   const setLanguage = (lang: Language) => {
     setLanguageState(lang);
@@ -33,10 +34,8 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
     return getTranslation(language, key);
   };
 
-  if (!mounted) {
-    return <>{children}</>;
-  }
-
+  // Always return Provider to ensure context is available
+  // during both SSR and client rendering
   return (
     <LanguageContext.Provider value={{ language, setLanguage, t }}>
       {children}
