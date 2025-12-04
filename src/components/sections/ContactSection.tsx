@@ -5,8 +5,10 @@ import { Input } from '@/components/ui/input';
 import { motion } from 'framer-motion';
 import { Mail, MapPin, Phone } from 'lucide-react';
 import { useState } from 'react';
+import { useLanguage } from '@/context/LanguageContext';
 
 export function ContactSection() {
+  const { t } = useLanguage();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -33,10 +35,10 @@ export function ContactSection() {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-playfair font-bold text-amber-950 mb-4">
-            Contáctanos
+            {t('contact.title')}
           </h2>
           <p className="text-lg text-gray-700 max-w-3xl mx-auto">
-            ¿Tienes preguntas? Nuestro equipo está aquí para ayudarte
+            {t('contact.subtitle')}
           </p>
         </motion.div>
 
@@ -50,25 +52,25 @@ export function ContactSection() {
             className="space-y-8"
           >
             <h3 className="text-2xl font-playfair font-bold text-amber-950">
-              Información de Contacto
+              {t('contact.info')}
             </h3>
 
             {[
               {
                 icon: Mail,
-                label: 'Email',
+                label: t('contact.email'),
                 value: 'info@oztallow.com',
                 href: 'mailto:info@oztallow.com',
               },
               {
                 icon: MapPin,
-                label: 'Ubicación',
+                label: t('contact.location'),
                 value: 'Australia',
                 href: '#',
               },
               {
                 icon: Phone,
-                label: 'Teléfono',
+                label: t('contact.phone'),
                 value: '+61 (0) XXX XXX XXX',
                 href: 'tel:+61xxxxxxxxx',
               },
@@ -113,7 +115,7 @@ export function ContactSection() {
             <form onSubmit={handleSubmit} className="space-y-6">
               <div>
                 <label className="block text-sm font-semibold text-amber-950 mb-2">
-                  Nombre
+                  {t('contact.form_name')}
                 </label>
                 <Input
                   type="text"
@@ -123,12 +125,12 @@ export function ContactSection() {
                   }
                   required
                   className="w-full bg-white border-2 border-amber-200 focus:border-amber-600 text-gray-900"
-                  placeholder="Tu nombre"
+                  placeholder={t('contact.form_name_placeholder')}
                 />
               </div>
               <div>
                 <label className="block text-sm font-semibold text-amber-950 mb-2">
-                  Email
+                  {t('contact.form_email')}
                 </label>
                 <Input
                   type="email"
@@ -138,12 +140,12 @@ export function ContactSection() {
                   }
                   required
                   className="w-full bg-white border-2 border-amber-200 focus:border-amber-600 text-gray-900"
-                  placeholder="tu@email.com"
+                  placeholder={t('contact.form_email_placeholder')}
                 />
               </div>
               <div>
                 <label className="block text-sm font-semibold text-amber-950 mb-2">
-                  Mensaje
+                  {t('contact.form_message')}
                 </label>
                 <textarea
                   value={formData.message}
@@ -153,7 +155,7 @@ export function ContactSection() {
                   required
                   rows={5}
                   className="w-full bg-white border-2 border-amber-200 focus:border-amber-600 text-gray-900 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-amber-600"
-                  placeholder="Tu mensaje..."
+                  placeholder={t('contact.form_message_placeholder')}
                 />
               </div>
               <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
@@ -161,7 +163,7 @@ export function ContactSection() {
                   type="submit"
                   className="w-full bg-linear-to-r from-amber-600 to-yellow-600 hover:from-amber-700 hover:to-yellow-700 text-white font-bold py-3"
                 >
-                  Enviar Mensaje
+                  {t('contact.send')}
                 </Button>
               </motion.div>
             </form>

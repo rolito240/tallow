@@ -5,8 +5,11 @@ import { Badge } from '@/components/ui/badge';
 import { faqs } from '@/lib/data/products';
 import { motion } from 'framer-motion';
 import { HelpCircle } from 'lucide-react';
+import { useLanguage } from '@/context/LanguageContext';
 
 export function FAQSectionImproved() {
+  const { t } = useLanguage();
+
   return (
     <section className="py-20 bg-linear-to-br from-amber-50 to-yellow-50">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -19,13 +22,13 @@ export function FAQSectionImproved() {
           className="text-center mb-16"
         >
           <Badge className="mb-4 bg-yellow-100 text-amber-900 border-amber-300">
-            Preguntas Frecuentes
+            {t('faq.title')}
           </Badge>
           <h2 className="text-4xl md:text-5xl font-playfair font-bold text-amber-950 mb-4">
-            ¿Por qué Sebo?
+            {t('faq.subtitle')}
           </h2>
           <p className="text-lg text-gray-700">
-            Respuestas a tus preguntas sobre nuestro producto revolucionario
+            {t('faq.description')}
           </p>
         </motion.div>
 
@@ -90,10 +93,10 @@ export function FAQSectionImproved() {
           className="mt-12 bg-white rounded-lg p-8 border-2 border-amber-200 text-center"
         >
           <h3 className="text-xl font-playfair font-bold text-amber-950 mb-4">
-            ¿Aún tienes preguntas?
+            {t('faq.contact_cta')}
           </h3>
           <p className="text-gray-700 mb-6">
-            Nuestro equipo de expertos está aquí para ayudarte. Contáctanos sin hesitar.
+            {t('faq.contact_desc')}
           </p>
           <motion.a
             whileHover={{ scale: 1.05 }}
@@ -101,7 +104,7 @@ export function FAQSectionImproved() {
             href="mailto:info@oztallow.com"
             className="inline-block px-8 py-3 bg-linear-to-r from-amber-600 to-yellow-600 hover:from-amber-700 hover:to-yellow-700 text-white font-bold rounded-lg transition shadow-lg"
           >
-            Contáctanos Ahora
+            {t('faq.contact_btn')}
           </motion.a>
         </motion.div>
       </div>
