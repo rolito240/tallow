@@ -3,6 +3,7 @@
 import { Card } from '@/components/ui/card';
 import { motion } from 'framer-motion';
 import { Leaf, Beaker, Heart } from 'lucide-react';
+import { useLanguage } from '@/context/LanguageContext';
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -28,27 +29,26 @@ const cardVariants = {
 };
 
 export function BenefitsSectionImproved() {
+  const { t } = useLanguage();
+  
   const benefits = [
     {
       id: 1,
       icon: Beaker,
-      title: 'Biocompatibilidad Total',
-      description:
-        'La estructura molecular del sebo es casi idéntica a los aceites naturales de la piel humana, permitiendo una absorción profunda sin obstruir poros.',
+      title: t('benefits.benefit1'),
+      description: t('benefits.benefit1_desc'),
     },
     {
       id: 2,
       icon: Leaf,
-      title: 'Vitaminas Naturales',
-      description:
-        'Un cóctel natural de vitaminas A, D, E y K con antioxidantes esenciales que la mayoría de las lociones sintéticas intentan imitar.',
+      title: t('benefits.benefit2'),
+      description: t('benefits.benefit2_desc'),
     },
     {
       id: 3,
       icon: Heart,
-      title: 'Alivio para Piel Sensible',
-      description:
-        'Específicamente formulado para calmar brotes de eccema, rosácea y psoriasis sin ardor ni irritación.',
+      title: t('benefits.benefit3'),
+      description: t('benefits.benefit3_desc'),
     },
   ];
 
@@ -64,10 +64,10 @@ export function BenefitsSectionImproved() {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-playfair font-bold text-amber-950 mb-4">
-            La Ciencia de la Naturaleza
+            {t('benefits.title')}
           </h2>
-          <p className="text-lg text-gray-700 max-w-3xl mx-auto">
-            Descubre por qué el sebo biocompatible es la solución que tu piel ha estado esperando
+          <p className="text-lg text-gray-700 max-w-3xl mx-auto leading-relaxed">
+            {t('benefits.description')}
           </p>
         </motion.div>
 

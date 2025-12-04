@@ -7,6 +7,7 @@ import { products } from '@/lib/data/products';
 import Link from 'next/link';
 import { ShoppingCart, Star } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { useLanguage } from '@/context/LanguageContext';
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -29,6 +30,7 @@ const productVariants = {
 };
 
 export function FeaturedProductsSectionImproved() {
+  const { t } = useLanguage();
   const featuredProducts = products.filter((p) => p.featured);
 
   return (
@@ -42,11 +44,11 @@ export function FeaturedProductsSectionImproved() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <Badge className="mb-4 bg-amber-100 text-amber-900 border-amber-300">
-            Colecciones Principales
+          <Badge className="mb-4 bg-amber-100 text-amber-900 border-amber-300 hover:scale-105 transition-transform">
+            {t('collections.title')}
           </Badge>
           <h2 className="text-4xl md:text-5xl font-playfair font-bold text-amber-950 mb-4">
-            Nuestra Colección Esencial
+            {t('collections.subtitle')}
           </h2>
           <p className="text-lg text-gray-700 max-w-3xl mx-auto">
             Soluciones simples y efectivas de cuidado de la piel para cada necesidad

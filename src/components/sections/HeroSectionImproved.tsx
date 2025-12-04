@@ -6,6 +6,7 @@ import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { CheckCircle2 } from 'lucide-react';
 import { useLanguage } from '@/context/LanguageContext';
+import { getTranslation } from '@/lib/i18n';
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -28,6 +29,23 @@ const itemVariants = {
 };
 
 export function HeroSectionImproved() {
+  const { language, t } = useLanguage();
+  
+  const trustItems = [
+    {
+      title: t('hero.trust1'),
+      desc: t('hero.trust1_desc'),
+    },
+    {
+      title: t('hero.trust2'),
+      desc: t('hero.trust2_desc'),
+    },
+    {
+      title: t('hero.trust3'),
+      desc: t('hero.trust3_desc'),
+    },
+  ];
+
   return (
     <section className="relative min-h-screen bg-gradient-to-br from-amber-50 via-white to-yellow-50 overflow-hidden pt-12">
       {/* Animated background elements */}
@@ -60,9 +78,9 @@ export function HeroSectionImproved() {
             <motion.div variants={itemVariants}>
               <Badge
                 variant="secondary"
-                className="bg-yellow-100 text-amber-900 border-amber-300 px-4 py-1.5 text-sm font-semibold"
+                className="bg-yellow-100 text-amber-900 border-amber-300 px-4 py-1.5 text-sm font-semibold hover:scale-105 transition-transform"
               >
-                ★ BEST SELLER
+                {t('hero.badge')}
               </Badge>
             </motion.div>
 
@@ -70,44 +88,43 @@ export function HeroSectionImproved() {
               variants={itemVariants}
               className="text-5xl md:text-6xl font-playfair font-bold text-amber-950 leading-tight"
             >
-              Nutrición Biocompatible
+              {t('hero.title')}
               <motion.span
                 variants={itemVariants}
                 className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-600 to-amber-600 block"
               >
-                El Renacimiento del Cuidado
+                {t('hero.subtitle')}
               </motion.span>
             </motion.h1>
 
             <motion.p
               variants={itemVariants}
-              className="text-lg md:text-xl text-gray-700 leading-relaxed"
+              className="text-lg md:text-xl text-gray-700 leading-relaxed max-w-lg"
             >
-              La hidratación que tu piel reconoce. Formulado con sebo 100% natural, idéntico a los
-              lípidos de tu propia piel para calmar la sequedad, el eccema y la psoriasis.
+              {t('hero.description')}
             </motion.p>
 
             <motion.div
               variants={itemVariants}
               className="flex flex-col sm:flex-row gap-4 pt-4"
             >
-              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+              <motion.div whileHover={{ scale: 1.05, y: -2 }} whileTap={{ scale: 0.95 }}>
                 <Button
                   asChild
                   size="lg"
-                  className="bg-gradient-to-r from-amber-600 to-yellow-600 hover:from-amber-700 hover:to-yellow-700 text-white font-bold text-lg px-8 py-6 rounded-lg shadow-lg"
+                  className="bg-gradient-to-r from-amber-600 to-yellow-600 hover:from-amber-700 hover:to-yellow-700 text-white font-bold text-lg px-8 py-6 rounded-lg shadow-lg hover:shadow-2xl transition-all duration-300"
                 >
-                  <Link href="#featured">Comprar el Tallow Original</Link>
+                  <Link href="#featured">{t('hero.cta1')}</Link>
                 </Button>
               </motion.div>
-              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+              <motion.div whileHover={{ scale: 1.05, y: -2 }} whileTap={{ scale: 0.95 }}>
                 <Button
                   asChild
                   variant="outline"
                   size="lg"
-                  className="border-amber-600 text-amber-600 hover:bg-amber-50 font-bold text-lg px-8 py-6 rounded-lg"
+                  className="border-amber-600 text-amber-600 hover:bg-amber-50 font-bold text-lg px-8 py-6 rounded-lg transition-all duration-300"
                 >
-                  <Link href="#benefits">Descubrir Beneficios</Link>
+                  <Link href="#benefits">{t('hero.cta2')}</Link>
                 </Button>
               </motion.div>
             </motion.div>
@@ -117,20 +134,7 @@ export function HeroSectionImproved() {
               variants={containerVariants}
               className="flex flex-col gap-4 pt-8"
             >
-              {[
-                {
-                  title: 'Certificado Halal',
-                  desc: '- Máximo estándar de calidad',
-                },
-                {
-                  title: '100% Alimentado con Pasto',
-                  desc: '- Australiano Premium',
-                },
-                {
-                  title: 'Libre de Químicos',
-                  desc: '- Naturalmente puro',
-                },
-              ].map((item, idx) => (
+              {trustItems.map((item, idx) => (
                 <motion.div
                   key={idx}
                   variants={itemVariants}
@@ -139,7 +143,7 @@ export function HeroSectionImproved() {
                   <motion.div
                     whileHover={{ rotate: 360, scale: 1.2 }}
                     transition={{ duration: 0.6 }}
-                    className="w-8 h-8 bg-gradient-to-br from-yellow-400 to-amber-500 rounded-full flex items-center justify-center flex-shrink-0"
+                    className="w-8 h-8 bg-gradient-to-br from-yellow-400 to-amber-500 rounded-full flex items-center justify-center flex-shrink-0 shadow-md"
                   >
                     <CheckCircle2 className="w-5 h-5 text-white" />
                   </motion.div>
