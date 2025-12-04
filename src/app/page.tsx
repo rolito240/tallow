@@ -1,23 +1,25 @@
-import { Header } from '@/components/Header';
-import { HeroSection } from '@/components/sections/HeroSection';
-import { BenefitsSection } from '@/components/sections/BenefitsSection';
-import { FeaturedProductsSection } from '@/components/sections/FeaturedProductsSection';
+import { HeaderImproved } from '@/components/HeaderImproved';
+import { HeroSectionImproved } from '@/components/sections/HeroSectionImproved';
+import { BenefitsSectionImproved } from '@/components/sections/BenefitsSectionImproved';
+import { FeaturedProductsSectionImproved } from '@/components/sections/FeaturedProductsSectionImproved';
 import { TestimonialsSection } from '@/components/sections/TestimonialsSection';
-import { FAQSection } from '@/components/sections/FAQSection';
-import { Footer } from '@/components/Footer';
+import { FAQSectionImproved } from '@/components/sections/FAQSectionImproved';
+import { ContactSection } from '@/components/sections/ContactSection';
+import { FooterImproved } from '@/components/FooterImproved';
 
 export default function Home() {
   return (
     <>
-      <Header />
+      <HeaderImproved />
       <main>
-        <HeroSection />
-        <BenefitsSection />
-        <FeaturedProductsSection />
+        <HeroSectionImproved />
+        <BenefitsSectionImproved />
+        <FeaturedProductsSectionImproved />
         <TestimonialsSection />
-        <FAQSection />
+        <FAQSectionImproved />
+        <ContactSection />
       </main>
-      <Footer />
+      <FooterImproved />
     </>
   );
 }
