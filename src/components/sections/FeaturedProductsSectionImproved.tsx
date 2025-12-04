@@ -119,11 +119,11 @@ export function FeaturedProductsSectionImproved() {
                           hidden: { opacity: 0, x: -10 },
                           visible: { opacity: 1, x: 0 },
                         }}
-                        className="flex items-center gap-2 text-sm text-gray-700 group/benefit hover:text-amber-600 transition"
+                        className="flex items-center gap-2 text-sm font-medium text-amber-800 group/benefit hover:text-amber-600 transition"
                       >
                         <motion.span
                           whileHover={{ scale: 1.2 }}
-                          className="text-amber-600 font-bold"
+                          className="text-amber-600 font-bold text-lg"
                         >
                           ✓
                         </motion.span>
@@ -143,12 +143,12 @@ export function FeaturedProductsSectionImproved() {
                           viewport={{ once: true }}
                           transition={{ delay: i * 0.05 }}
                         >
-                          <Star className="w-4 h-4 fill-yellow-400 text-yellow-400" />
+                          <Star className="w-5 h-5 fill-yellow-400 text-yellow-400" />
                         </motion.div>
                       ))}
-                      <span className="text-sm text-gray-600 ml-2">(4.9/5)</span>
+                      <span className="text-sm font-semibold text-amber-900 ml-2">(4.9/5)</span>
                     </div>
-                    <span className="text-3xl font-playfair font-bold text-amber-600">
+                    <span className="text-3xl font-playfair font-bold bg-linear-to-r from-amber-600 to-yellow-600 bg-clip-text text-transparent">
                       {product.currency}${product.price}
                     </span>
                   </div>
@@ -186,9 +186,9 @@ export function FeaturedProductsSectionImproved() {
             <Button
               asChild
               size="lg"
-              className="bg-amber-600 hover:bg-amber-700 text-white font-bold text-lg px-10 py-6 shadow-xl"
+              className="bg-linear-to-r from-amber-600 to-yellow-600 hover:from-amber-700 hover:to-yellow-700 text-white font-bold text-lg px-10 py-6 shadow-xl"
             >
-              <Link href="#featured">Ver Todos los Productos</Link>
+              <Link href="/productos">{t('collections.viewAll') || 'Ver Todos los Productos'}</Link>
             </Button>
           </motion.div>
         </motion.div>

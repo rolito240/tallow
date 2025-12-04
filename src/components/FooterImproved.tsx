@@ -66,8 +66,8 @@ export function FooterImproved() {
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
             >
-              <h3 className="text-2xl font-bold mb-2">Obtén 10% de Descuento</h3>
-              <p>Suscríbete a nuestro newsletter para ofertas exclusivas</p>
+              <h3 className="text-2xl font-bold mb-2 text-white">{t('footer.newsletter')}</h3>
+              <p className="text-amber-50">{t('footer.newsletter_desc')}</p>
             </motion.div>
             <motion.form
               onSubmit={handleSubscribe}

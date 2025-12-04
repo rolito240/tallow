@@ -92,14 +92,14 @@ export function BenefitsSectionImproved() {
                   <motion.div
                     whileHover={{ rotate: 360, scale: 1.1 }}
                     transition={{ duration: 0.6 }}
-                    className="w-16 h-16 bg-linear-to-br from-yellow-100 to-amber-100 rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition"
+                    className="w-16 h-16 bg-linear-to-br from-amber-600 to-yellow-600 rounded-full flex items-center justify-center mb-6 group-hover:shadow-lg transition shadow-md"
                   >
-                    <IconComponent className="w-8 h-8 text-amber-600" />
+                    <IconComponent className="w-8 h-8 text-white font-bold" />
                   </motion.div>
                   <h3 className="text-2xl font-playfair font-bold text-amber-950 mb-4">
                     {benefit.title}
                   </h3>
-                  <p className="text-gray-700 leading-relaxed">{benefit.description}</p>
+                  <p className="text-gray-800 font-medium leading-relaxed">{benefit.description}</p>
                 </Card>
               </motion.div>
             );

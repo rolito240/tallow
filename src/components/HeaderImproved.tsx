@@ -106,24 +106,26 @@ export function HeaderImproved() {
             {/* Desktop CTA and Language */}
             <div className="hidden md:flex items-center space-x-3">
               {/* Language Selector */}
-              <div className="flex items-center gap-2 border border-gray-200 rounded-lg p-1">
+              <div className="flex items-center gap-2 border-2 border-amber-200 rounded-lg p-1 bg-white">
                 <button
                   onClick={() => setLanguage('es')}
-                  className={`px-3 py-1 rounded text-sm font-medium transition ${
+                  className={`px-3 py-1.5 rounded font-bold text-sm transition ${
                     language === 'es'
-                      ? 'bg-amber-600 text-white'
-                      : 'text-gray-600 hover:bg-amber-50'
+                      ? 'bg-linear-to-r from-amber-600 to-yellow-600 text-white shadow-md'
+                      : 'text-amber-900 hover:bg-amber-100'
                   }`}
+                  aria-label="Español"
                 >
                   ES
                 </button>
                 <button
                   onClick={() => setLanguage('en')}
-                  className={`px-3 py-1 rounded text-sm font-medium transition ${
+                  className={`px-3 py-1.5 rounded font-bold text-sm transition ${
                     language === 'en'
-                      ? 'bg-amber-600 text-white'
-                      : 'text-gray-600 hover:bg-amber-50'
+                      ? 'bg-linear-to-r from-amber-600 to-yellow-600 text-white shadow-md'
+                      : 'text-amber-900 hover:bg-amber-100'
                   }`}
+                  aria-label="English"
                 >
                   EN
                 </button>
@@ -135,10 +137,9 @@ export function HeaderImproved() {
               >
                 <Button
                   asChild
-                  variant="outline"
-                  className="border-amber-600 text-amber-600 hover:bg-amber-50 font-semibold"
+                  className="border-2 border-amber-600 text-amber-600 hover:bg-amber-600 hover:text-white font-bold transition"
                 >
-                  <Link href="/productos">{t('products.title')}</Link>
+                  <Link href="/productos">{t('nav.products')}</Link>
                 </Button>
               </motion.div>
               <motion.div
@@ -147,7 +148,7 @@ export function HeaderImproved() {
               >
                 <Button
                   asChild
-                  className="bg-linear-to-r from-amber-600 to-yellow-600 hover:from-amber-700 hover:to-yellow-700 text-white font-semibold shadow-lg"
+                  className="bg-linear-to-r from-amber-600 to-yellow-600 hover:from-amber-700 hover:to-yellow-700 text-white font-bold shadow-lg"
                 >
                   <Link href="/productos" className="flex items-center gap-2">
                     <ShoppingCart className="w-4 h-4" />
