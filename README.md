@@ -1,61 +1,119 @@
-# Oz Tallow Skincare
+# OZ Tallow Skincare Website
 
-Pure Australian Grass-Fed Tallow Skincare - Natural, Halal Certified, Chemical-Free
+🌿 **Sitio web oficial de OZ Tallow Skincare** - Cuidado de la piel natural con sebo 100% alimentado con pasto.
 
-## 🌿 About
+## 🎯 Características
 
-Oz Tallow is a premium Australian skincare brand specializing in 100% grass-fed tallow products. Our mission is to return skincare to its essentials - pure, biocompatible, and effective ingredients that nature intended.
+- ✨ Diseño moderno y elegante con paleta de colores tierra
+- 🎨 Tipografía profesional (Playfair Display + Montserrat)
+- 📱 Totalmente responsive y mobile-first
+- ⚡ Optimizado para rendimiento con Next.js 14+
+- 🎭 Componentes reutilizables con shadcn/ui
+- 🎨 Estilizado con Tailwind CSS
+- 🔍 SEO optimizado con metadata, sitemap y robots.txt
+- ♿ Accesible y semántico
 
-### Key Features
-- 100% Grass-Fed Australian Tallow
-- Halal Certified Purity
-- Chemical-Free Formulations
-- Bio-Compatible with All Skin Types
-- Made in Australia with Pride
+## 🛠️ Stack Tecnológico
 
-## 🛍️ Products
+- **Framework**: Next.js 16 (App Router)
+- **UI Library**: React 19
+- **Styling**: Tailwind CSS v4
+- **Components**: shadcn/ui
+- **Icons**: Lucide React
+- **Language**: TypeScript
+- **Package Manager**: npm
 
-- **Essential Whipped Tallow Cream** (AUS$45.00)
-- **Premium Whipped Tallow Cream** (AUS$49.00)
-- **Renewal Care Cream** (AUS$48.00)
-- **Sensitive Skin Formula** (AUS$47.00)
+## 📦 Instalación
 
-## 🚀 Technology Stack
+\\\ash
+# Clonar el repositorio
+git clone https://github.com/rolito240/tallow.git
 
-- React 18
-- Vite
-- React Router DOM
-- CSS3 with Custom Properties
-- Responsive Design
-
-## 📦 Installation
-
-```bash
+# Instalar dependencias
 npm install
-```
 
-## 🔧 Development
-
-```bash
+# Ejecutar en desarrollo
 npm run dev
-```
 
-## 🏗️ Build
-
-```bash
+# Compilar para producción
 npm run build
-```
 
-## 📄 License
+# Ejecutar en producción
+npm start
+\\\
 
-© 2024 Oz Tallow Skincare. All rights reserved.
+## 🎨 Paleta de Colores
 
-## 📧 Contact
+- **Crema/Marfil**: #FDFBF7 (Fondo principal)
+- **Terracota Suave**: #E07A5F (CTAs)
+- **Salvia**: #81B29A (Acentos)
+- **Marrón Café**: #3D405B (Tipografía)
+- **Dorado/Amarillo**: Gradientes para destacar
 
-- Email: info@oztallow.com
-- Website: https://oztallow.com
-- Instagram: @OzTallow
+## 📁 Estructura del Proyecto
+
+\\\
+src/
+├── app/
+│   ├── layout.tsx          # Layout principal con metadata SEO
+│   ├── page.tsx            # Página de inicio
+│   ├── globals.css         # Estilos globales
+│   ├── robots.ts           # Configuración robots.txt
+│   └── sitemap.ts          # Sitemap XML
+├── components/
+│   ├── ui/                 # Componentes shadcn/ui
+│   ├── sections/           # Secciones de la landing page
+│   │   ├── HeroSection.tsx
+│   │   ├── BenefitsSection.tsx
+│   │   ├── FeaturedProductsSection.tsx
+│   │   ├── TestimonialsSection.tsx
+│   │   └── FAQSection.tsx
+│   ├── Header.tsx          # Navegación principal
+│   └── Footer.tsx          # Pie de página
+└── lib/
+    ├── data/
+    │   └── products.ts     # Datos de productos, testimonios y FAQs
+    └── utils.ts            # Utilidades
+\\\
+
+## 🚀 Deployment en Vercel
+
+\\\ash
+# Instalar Vercel CLI
+npm install -g vercel
+
+# Deploy
+vercel
+\\\
+
+O conectar el repositorio en [vercel.com](https://vercel.com) para deployment automático.
+
+## 📝 Variables de Entorno
+
+Crear archivo \.env.local\ con:
+
+\\\nv
+NEXT_PUBLIC_SITE_URL=https://oztallow.com
+\\\
+
+## 🎯 Optimización SEO
+
+- ✅ Metadata completa en cada página
+- ✅ Open Graph tags
+- ✅ Sitemap.xml generado automáticamente
+- ✅ Robots.txt configurado
+- ✅ Semantic HTML
+- ✅ Alt text en imágenes
+- ✅ Performance optimizado
+
+## 📄 Licencia
+
+© 2024 OZ Tallow Skincare. Todos los derechos reservados.
+
+## 👨‍💻 Desarrollado por
+
+Proyecto desarrollado con las mejores prácticas de desarrollo web moderno.
 
 ---
 
-**From Australian Pastures to Your Skin**
+**Made with ❤️ in Australia**
