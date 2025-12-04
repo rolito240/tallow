@@ -1,7 +1,5 @@
 'use client';
 
-import { HeaderImproved } from '@/components/HeaderImproved';
-import { FooterImproved } from '@/components/FooterImproved';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -35,19 +33,17 @@ export default function ProductosPage() {
   };
 
   return (
-    <>
-      <HeaderImproved />
-      <main className="min-h-screen bg-linear-to-b from-white to-amber-50">
-        {/* Hero Section */}
-        <motion.section
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="py-20 px-4 sm:px-6 lg:px-8 bg-linear-to-r from-amber-100 to-yellow-100"
-        >
-          <div className="max-w-7xl mx-auto text-center">
-            <h1 className="text-5xl md:text-6xl font-playfair font-bold text-amber-900 mb-4">
-              {t('products.title')}
+    <main className="min-h-screen bg-linear-to-b from-white to-amber-50">
+      {/* Hero Section */}
+      <motion.section
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+        className="py-20 px-4 sm:px-6 lg:px-8 bg-linear-to-r from-amber-100 to-yellow-100"
+      >
+        <div className="max-w-7xl mx-auto text-center">
+          <h1 className="text-5xl md:text-6xl font-playfair font-bold text-amber-900 mb-4">
+            {t('products.title')}
             </h1>
             <p className="text-xl text-gray-700 max-w-2xl mx-auto">
               {t('products.description')}
@@ -174,7 +170,5 @@ export default function ProductosPage() {
           </div>
         </motion.section>
       </main>
-      <FooterImproved />
-    </>
   );
 }

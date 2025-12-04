@@ -1,7 +1,5 @@
 'use client';
 
-import { HeaderImproved } from '@/components/HeaderImproved';
-import { FooterImproved } from '@/components/FooterImproved';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Card } from '@/components/ui/card';
@@ -51,15 +49,13 @@ export default function ContactoPage() {
   ];
 
   return (
-    <>
-      <HeaderImproved />
-      <main className="min-h-screen bg-white">
-        {/* Hero Section */}
-        <motion.section
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="py-20 px-4 sm:px-6 lg:px-8 bg-linear-to-r from-amber-100 to-yellow-100"
+    <main className="min-h-screen bg-white">
+      {/* Hero Section */}
+      <motion.section
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+        className="py-20 px-4 sm:px-6 lg:px-8 bg-linear-to-r from-amber-100 to-yellow-100"
         >
           <div className="max-w-7xl mx-auto text-center">
             <h1 className="text-5xl md:text-6xl font-playfair font-bold text-amber-900 mb-4">
@@ -237,7 +233,5 @@ export default function ContactoPage() {
           </div>
         </motion.section>
       </main>
-      <FooterImproved />
-    </>
   );
 }

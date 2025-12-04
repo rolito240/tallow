@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { Playfair_Display, Montserrat } from 'next/font/google';
 import './globals.css';
-import { LanguageProvider } from '@/context/LanguageContext';
+import { LayoutClient } from '@/components/LayoutClient';
 
 const playfair = Playfair_Display({
   variable: '--font-playfair',
@@ -36,6 +36,8 @@ export const metadata: Metadata = {
   },
 };
 
+export const dynamic = 'force-dynamic';
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -44,9 +46,7 @@ export default function RootLayout({
   return (
     <html lang="es" className={`${playfair.variable} ${montserrat.variable}`}>
       <body className="font-montserrat antialiased">
-        <LanguageProvider>
-          {children}
-        </LanguageProvider>
+        <LayoutClient>{children}</LayoutClient>
       </body>
     </html>
   );

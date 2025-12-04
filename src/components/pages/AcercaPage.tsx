@@ -1,7 +1,5 @@
 'use client';
 
-import { HeaderImproved } from '@/components/HeaderImproved';
-import { FooterImproved } from '@/components/FooterImproved';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { Leaf, Heart, Award, Zap } from 'lucide-react';
@@ -67,14 +65,12 @@ export default function AcercaPage() {
   ];
 
   return (
-    <>
-      <HeaderImproved />
-      <main className="min-h-screen bg-white">
-        {/* Hero Section */}
-        <motion.section
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
+    <main className="min-h-screen bg-white">
+      {/* Hero Section */}
+      <motion.section
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
           className="py-20 px-4 sm:px-6 lg:px-8 bg-linear-to-r from-amber-100 to-yellow-100"
         >
           <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center">
@@ -217,7 +213,5 @@ export default function AcercaPage() {
           </div>
         </motion.section>
       </main>
-      <FooterImproved />
-    </>
   );
 }
