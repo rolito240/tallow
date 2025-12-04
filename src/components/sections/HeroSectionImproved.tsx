@@ -5,6 +5,7 @@ import { Badge } from '@/components/ui/badge';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { CheckCircle2 } from 'lucide-react';
+import { useLanguage } from '@/context/LanguageContext';
 
 const containerVariants = {
   hidden: { opacity: 0 },

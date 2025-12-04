@@ -7,6 +7,8 @@ import { FAQSectionImproved } from '@/components/sections/FAQSectionImproved';
 import { ContactSection } from '@/components/sections/ContactSection';
 import { FooterImproved } from '@/components/FooterImproved';
 
+export const dynamic = 'force-dynamic';
+
 export default function Home() {
   return (
     <>

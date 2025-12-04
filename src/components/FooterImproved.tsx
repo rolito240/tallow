@@ -7,8 +7,10 @@ import { Input } from '@/components/ui/input';
 import { Mail, Leaf, Heart, Instagram, Facebook, Twitter } from 'lucide-react';
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useLanguage } from '@/context/LanguageContext';
 
 export function FooterImproved() {
+  const { language, t } = useLanguage();
   const [email, setEmail] = useState('');
   const [subscribed, setSubscribed] = useState(false);
 
@@ -21,21 +23,21 @@ export function FooterImproved() {
 
   const footerSections = [
     {
-      title: 'Navegación',
+      title: language === 'es' ? 'Navegación' : 'Navigation',
       links: [
-        { label: 'Home', href: '/' },
-        { label: 'Productos', href: '#featured' },
-        { label: 'Por qué Tallow', href: '#benefits' },
-        { label: 'Contacto', href: '#contact' },
+        { label: t('nav.home'), href: '/' },
+        { label: t('nav.products'), href: '/productos' },
+        { label: t('nav.about'), href: '/acerca' },
+        { label: t('nav.contact'), href: '/contacto' },
       ],
     },
     {
-      title: 'Soporte',
+      title: language === 'es' ? 'Soporte' : 'Support',
       links: [
-        { label: 'FAQ', href: '#faq' },
-        { label: 'Envíos & Devoluciones', href: '#' },
-        { label: 'Política de Privacidad', href: '#' },
-        { label: 'Términos de Servicio', href: '#' },
+        { label: t('faq.title'), href: '#faq' },
+        { label: language === 'es' ? 'Envíos & Devoluciones' : 'Shipping & Returns', href: '#' },
+        { label: t('footer.privacy'), href: '#' },
+        { label: t('footer.terms'), href: '#' },
       ],
     },
   ];

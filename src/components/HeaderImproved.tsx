@@ -3,29 +3,31 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
-import { useState, useEffect } from 'react';
-import { Menu, X, ShoppingCart } from 'lucide-react';
+import { useState } from 'react';
+import { Menu, X, ShoppingCart, Globe } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useLanguage } from '@/context/LanguageContext';
 
 export function HeaderImproved() {
+  const { language, setLanguage, t } = useLanguage();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [scrollY, setScrollY] = useState(0);
   const [isScrolled, setIsScrolled] = useState(false);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrollY(window.scrollY);
+  const handleScroll = () => {
+    if (typeof window !== 'undefined') {
       setIsScrolled(window.scrollY > 50);
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+    }
+  };
+
+  if (typeof window !== 'undefined') {
+    window.addEventListener('scroll', handleScroll, { once: false });
+  }
 
   const navItems = [
-    { label: 'Home', href: '/' },
-    { label: 'Productos', href: '#featured' },
-    { label: 'Por qué Tallow', href: '#benefits' },
-    { label: 'Contacto', href: '#contact' },
+    { label: t('nav.home'), href: '/' },
+    { label: t('nav.products'), href: '/productos' },
+    { label: t('nav.about'), href: '/acerca' },
+    { label: t('nav.contact'), href: '/contacto' },
   ];
 
   return (
@@ -35,13 +37,13 @@ export function HeaderImproved() {
         initial={{ y: -60 }}
         animate={{ y: 0 }}
         transition={{ duration: 0.5 }}
-        className="w-full bg-gradient-to-r from-yellow-50 to-amber-50 border-b border-yellow-200 py-3 px-4 text-center sticky top-0 z-50"
+        className="w-full bg-linear-to-r from-yellow-50 to-amber-50 border-b border-yellow-200 py-3 px-4 text-center sticky top-0 z-50"
       >
         <div className="flex items-center justify-center gap-2 flex-wrap text-sm md:text-base font-medium text-amber-900">
           <span>🌿</span>
           <p>
-            El secreto mejor guardado de la historia para una piel radiante.{' '}
-            <span className="font-bold">Envío gratis en pedidos +AUS$50</span>
+            {t('header.announcement')}{' '}
+            <span className="font-bold">{t('header.freeShipping')}</span>
           </p>
         </div>
       </motion.div>
@@ -63,9 +65,9 @@ export function HeaderImproved() {
             <motion.div
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="flex-shrink-0"
+              className="shrink-0"
             >
-              <Link href="/" className="flex items-center space-x-3">
+              <Link href="/" className="flex items-center space-x-2">
                 <div className="relative w-10 h-10">
                   <Image
                     src="/logo.png"
@@ -75,7 +77,7 @@ export function HeaderImproved() {
                     priority
                   />
                 </div>
-                <span className="font-playfair font-bold text-2xl text-amber-900 hidden sm:inline">
+                <span className="font-playfair font-bold text-xl text-amber-900 hidden sm:inline">
                   OZ Tallow
                 </span>
               </Link>
@@ -95,14 +97,38 @@ export function HeaderImproved() {
                     className="relative px-3 py-2 text-gray-700 font-medium hover:text-amber-600 transition group"
                   >
                     {item.label}
-                    <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-amber-600 to-yellow-600 group-hover:w-full transition-all duration-300"></span>
+                    <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-linear-to-r from-amber-600 to-yellow-600 group-hover:w-full transition-all duration-300"></span>
                   </Link>
                 </motion.div>
               ))}
             </nav>
 
-            {/* Desktop CTA */}
-            <div className="hidden md:flex space-x-3">
+            {/* Desktop CTA and Language */}
+            <div className="hidden md:flex items-center space-x-3">
+              {/* Language Selector */}
+              <div className="flex items-center gap-2 border border-gray-200 rounded-lg p-1">
+                <button
+                  onClick={() => setLanguage('es')}
+                  className={`px-3 py-1 rounded text-sm font-medium transition ${
+                    language === 'es'
+                      ? 'bg-amber-600 text-white'
+                      : 'text-gray-600 hover:bg-amber-50'
+                  }`}
+                >
+                  ES
+                </button>
+                <button
+                  onClick={() => setLanguage('en')}
+                  className={`px-3 py-1 rounded text-sm font-medium transition ${
+                    language === 'en'
+                      ? 'bg-amber-600 text-white'
+                      : 'text-gray-600 hover:bg-amber-50'
+                  }`}
+                >
+                  EN
+                </button>
+              </div>
+
               <motion.div
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
@@ -112,7 +138,7 @@ export function HeaderImproved() {
                   variant="outline"
                   className="border-amber-600 text-amber-600 hover:bg-amber-50 font-semibold"
                 >
-                  <Link href="#featured">Ver Productos</Link>
+                  <Link href="/productos">{t('products.title')}</Link>
                 </Button>
               </motion.div>
               <motion.div
@@ -121,11 +147,11 @@ export function HeaderImproved() {
               >
                 <Button
                   asChild
-                  className="bg-gradient-to-r from-amber-600 to-yellow-600 hover:from-amber-700 hover:to-yellow-700 text-white font-semibold shadow-lg"
+                  className="bg-linear-to-r from-amber-600 to-yellow-600 hover:from-amber-700 hover:to-yellow-700 text-white font-semibold shadow-lg"
                 >
-                  <Link href="#featured" className="flex items-center gap-2">
+                  <Link href="/productos" className="flex items-center gap-2">
                     <ShoppingCart className="w-4 h-4" />
-                    Comprar
+                    {t('hero.cta')}
                   </Link>
                 </Button>
               </motion.div>
@@ -167,12 +193,44 @@ export function HeaderImproved() {
                     </Link>
                   </motion.div>
                 ))}
+
+                {/* Mobile Language Selector */}
+                <div className="px-4 py-2 flex items-center gap-2 border border-gray-200 rounded-lg">
+                  <Globe className="w-4 h-4 text-gray-600" />
+                  <button
+                    onClick={() => {
+                      setLanguage('es');
+                      setMobileMenuOpen(false);
+                    }}
+                    className={`flex-1 px-2 py-1 rounded text-sm font-medium transition ${
+                      language === 'es'
+                        ? 'bg-amber-600 text-white'
+                        : 'text-gray-600 hover:bg-amber-50'
+                    }`}
+                  >
+                    Español
+                  </button>
+                  <button
+                    onClick={() => {
+                      setLanguage('en');
+                      setMobileMenuOpen(false);
+                    }}
+                    className={`flex-1 px-2 py-1 rounded text-sm font-medium transition ${
+                      language === 'en'
+                        ? 'bg-amber-600 text-white'
+                        : 'text-gray-600 hover:bg-amber-50'
+                    }`}
+                  >
+                    English
+                  </button>
+                </div>
+
                 <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                   <Button
                     asChild
-                    className="w-full mt-4 bg-gradient-to-r from-amber-600 to-yellow-600 hover:from-amber-700 hover:to-yellow-700 text-white font-semibold"
+                    className="w-full mt-4 bg-linear-to-r from-amber-600 to-yellow-600 hover:from-amber-700 hover:to-yellow-700 text-white font-semibold"
                   >
-                    <Link href="#contact">Comprar Ahora</Link>
+                    <Link href="/productos">{t('hero.cta')}</Link>
                   </Button>
                 </motion.div>
               </motion.nav>
