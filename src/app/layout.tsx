@@ -16,7 +16,7 @@ const montserrat = Montserrat({
 });
 
 export const metadata: Metadata = {
-  title: 'OZ Tallow Skincare | 100% Grass-Fed Natural Tallow Cream',
+  title: '[LIVE] OZ Tallow Skincare | 100% Grass-Fed Natural Tallow Cream',
   description:
     'Discover Australia\'s purest skincare secret. 100% grass-fed tallow, halal-certified, and chemical-free. Bio-compatible nutrition for your skin.',
   keywords: [
